@@ -26,4 +26,10 @@ ___
 > `• Adicionei um sistema de histórico de chat para contexto ao dev no momento do desenvolvimento.`
 >
 > `• Adicionado no app de demandas: atribuição de demandas por nome para devs | filtro "minha demandas" | filtro por complexidade | adicionado opção de anexar arquivos ao chat | taxa de recusa | demandas paradas | top solicitantes (mostra o usuário que mais tem demandas, isso facilita um fluxo de conversas caso seja necessário) | troca de comentários entre DEV e SOLICITANTE na aba da demanda`
+>
+> `• Reestruturação da arquitetura: trocada a ideia de vários subdomínios para cada app (sugestão do João) por 1 subdomínio único com os apps adicionados diretamente no site, em formato de barra de menu;`
+>
+> `• Alteração de nome/domínio do hub para hub.pumpmidia.com/;`
+>
+> `• Criação de um novo repositório para protótipos de projetos que serão acrescentados no hub da PumP.`
 ___
