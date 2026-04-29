@@ -33,3 +33,13 @@ ___
 >
 > `• Criação de um novo repositório para protótipos de projetos que serão acrescentados no hub da PumP.`
 ___
+> ***29/04/2026***  
+>
+> `• Adicionadas ao DEV_PROMPT.md três novas regras de processo: documentação contínua (gatilhos automáticos por subtask/task/story), gatilhos de Git (branch, commit, push e PR seguindo Conventional Commits) e granularidade ágil (Epic → Story → Task → Subtask);`  
+>
+> `• Substituído o app _template por dois padrões de design candidatos: patterDesign1 e patterDesignd2. Servirão de base para escolher o padrão visual oficial do hub;`  
+>
+> `• Adicionada regra ao .gitignore para *:Zone.Identifier (metadados ADS criados pelo Windows ao copiar arquivos para o WSL) e removidos os 130 arquivos desse tipo que estavam versionados no repo;`  
+>
+> `• Três commits enviados ao origin/main do pumpCore: docs(dev-prompt), chore(template) e chore (limpeza dos Zone.Identifier).`
+___
