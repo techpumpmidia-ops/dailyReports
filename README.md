@@ -35,45 +35,19 @@ ___
 ___
 > ***29/04/2026***  
 >
-> `• Adicionadas ao DEV_PROMPT.md três novas regras de processo: documentação contínua (gatilhos automáticos por subtask/task/story), gatilhos de Git (branch, commit, push e PR seguindo Conventional Commits) e granularidade ágil (Epic → Story → Task → Subtask);`  
+> `• Processo: incluídas no DEV_PROMPT do pumpCore três regras de trabalho — documentação contínua, fluxo de Git padronizado (branch, commit, PR) e granularidade ágil (Epic → Story → Task → Subtask). Objetivo: padronizar entregas e tornar o histórico mais auditável;`  
 >
-> `• Substituído o app _template por dois padrões de design candidatos: patterDesign1 e patterDesignd2. Servirão de base para escolher o padrão visual oficial do hub;`  
+> `• Padrão visual: removido o template antigo e adicionados dois padrões candidatos (patterDesign1 e patterDesignd2) para escolha do visual oficial do hub. Limpeza no repositório de 130 arquivos de metadados do Windows que poluíam o histórico;`  
 >
-> `• Adicionada regra ao .gitignore para *:Zone.Identifier (metadados ADS criados pelo Windows ao copiar arquivos para o WSL) e removidos os 130 arquivos desse tipo que estavam versionados no repo;`  
+> `• Protótipo HubPumP: criada a 'casca' do hub (porta de entrada da equipe tech) rodando offline em localhost, mesmo padrão técnico do DevFlow. Inclui cadastro com aprovação por administrador, login com abas separadas (Padrão / Dev) e home listando os 3 apps internos (DevFlow, Demand Manager, Mídia Tracker) — clicáveis e visíveis, ainda sem funcionalidades próprias. Serve de base testável para o hub real que entrará em produção depois;`  
 >
-> `• Três commits enviados ao origin/main do pumpCore: docs(dev-prompt), chore(template) e chore (limpeza dos Zone.Identifier).`
+> `• Perfil do usuário: tela completa com foto, cargo, edição de dados, troca de senha, preferências de notificações, histórico de acessos (cadastro, último login, apps abertos) e 'Zona de perigo' para desativação da conta com dupla confirmação;`  
 >
-> `• Refatoração do prototipes/hubpump: arquivos do Figma movidos para visualReference/ e criado protótipo HubPumP nos moldes do DevFlow (backend Express+SQLite+JWT na porta 4001, frontend React+Vite+Tailwind na porta 5174). Apenas casca do hub: cadastro com aprovação por dev, login JWT, home com 3 cards de apps placeholder (DevFlow, Demand Manager, Mídia Tracker) clicáveis mas não funcionais, e tela /users só para dev. Tudo offline/localhost, sem deploy;`  
+> `• Acesso rápido e descoberta: campo de busca por nome na home + sistema de favoritos por usuário (estrela no card e seção dedicada de acesso rápido);`  
 >
-> `• Adicionadas tabs de login Padrão/Dev: a aba 'Dev' bloqueia contas sem role 'dev' e desfaz a sessão se a verificação falhar;`  
+> `• Notificações: feed por usuário com sino e badge no header, criação automática quando o administrador aprova cadastros ou altera permissões. Cada usuário controla quais tipos de notificação quer receber;`  
 >
-> `• Adicionada coluna avatar_url em users + endpoint PUT /api/auth/me para edição de perfil (nome, e-mail, foto e troca de senha com verificação da senha atual). JWT é reemitido quando nome/e-mail mudam;`  
+> `• Painel de administrador: tela de Usuários reescrita — cada usuário pode ser expandido para ver cargo, status, último acesso, apps que mais usa e preferências configuradas, mantendo as ações de aprovar e alterar permissão. Acesso restrito a contas dev;`  
 >
-> `• Criada página /profile com upload de foto via file input (data URL ≤ 1.5MB salvo direto no SQLite) e troca de senha em formulário separado;`  
->
-> `• Novo componente Avatar (foto ou iniciais) clicável no header do hub, posicionado entre o toggle de tema e o botão Sair, levando ao perfil;`  
->
-> `• Permissão da tela /users segue restrita a dev — usuário padrão não vê o link nem consegue acessar a rota.`
->
-> `• Adicionada busca de apps por nome na home do hub (com normalização de acento) e estado vazio quando nada bate. Faixa de filtros foi adicionada e depois removida — ficou só a busca, mais limpa;`  
->
-> `• Sistema de favoritos por usuário: nova tabela user_favorites (PK composta), endpoints GET/PUT/DELETE /api/favorites[/:slug], hook useFavorites com toggle otimista. Botão de estrela no card de cada app e seção 'Favoritos' acima de 'Todos os apps' para acesso rápido (aparece quando não há busca ativa);`  
->
-> `• Perfil reformulado: cargo, preferências de notificações em 3 toggles auto-save (aprovação / mudança de role / anúncios), upload de foto via data URL (≤ 1.5MB no SQLite), troca de senha exigindo a senha atual e estatísticas próprias (data de cadastro, último acesso, total de apps acessados + breakdown por app);`  
->
-> `• Zona de perigo no perfil em moldura vermelha — desativar conta exige senha atual + digitar literal 'DESATIVAR'. Login e middleware bloqueiam contas com status 'deactivated'. Tela 'Pending' do App.tsx ganhou variante para conta desativada;`  
->
-> `• Sistema de notificações no backend: tabela notifications, criação automática quando o admin aprova cadastro ou altera role do usuário, respeitando as preferências do destinatário. Endpoints GET /api/notifications, PUT /:id/read e PUT /read-all. NotificationsProvider no topo do app, sino com badge no header (dropdown clicável) e seção dedicada na página de perfil;`  
->
-> `• Registro de acessos: tabela app_access_log preenchida em POST /api/apps/:slug/access (chamado pelo AppPlaceholder ao abrir um app). Stats próprias via GET /api/auth/me/stats e stats de qualquer usuário via GET /api/users/:id/details (admin only);`  
->
-> `• Tela /users (admin) reescrita: cada linha vira um disclosure expansível com cargo, status, último login, último acesso a app, breakdown de apps acessados e estado das preferências de notificação. Mantém ações de aprovar e alterar role na linha;`  
->
-> `• Colunas adicionais na tabela users: job_title, notification_prefs (JSON), last_login_at, deactivated_at — todas via ALTER TABLE idempotente (protótipo segue sem migration formal);`  
->
-> `• Endpoints novos no backend: POST /api/auth/me/deactivate (com confirmação literal), GET /api/auth/me/stats, POST /api/apps/:slug/access, /api/notifications [...], /api/favorites [...], /api/users/:id/details. PUT /api/auth/me passou a aceitar jobTitle e notificationPrefs;`  
->
-> `• Estrutura: criados .claude/settings.local.json em devflow/DevFlow e hubpump/HubPumP (gitignored, sem impacto em build/tsconfig/vite/tailwind);`  
->
-> `• Tudo subido ao origin/main do repo prototipes em commits separados: feat(hubpump) com favoritos+busca+perfil completo+notificações+stats+zona de perigo, mais o chore do .gitignore.`
+> `• Tudo versionado e enviado ao GitHub (repos pumpCore, prototipes e dailyReports).`
 ___
