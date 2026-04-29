@@ -42,4 +42,16 @@ ___
 > `• Adicionada regra ao .gitignore para *:Zone.Identifier (metadados ADS criados pelo Windows ao copiar arquivos para o WSL) e removidos os 130 arquivos desse tipo que estavam versionados no repo;`  
 >
 > `• Três commits enviados ao origin/main do pumpCore: docs(dev-prompt), chore(template) e chore (limpeza dos Zone.Identifier).`
+>
+> `• Refatoração do prototipes/hubpump: arquivos do Figma movidos para visualReference/ e criado protótipo HubPumP nos moldes do DevFlow (backend Express+SQLite+JWT na porta 4001, frontend React+Vite+Tailwind na porta 5174). Apenas casca do hub: cadastro com aprovação por dev, login JWT, home com 3 cards de apps placeholder (DevFlow, Demand Manager, Mídia Tracker) clicáveis mas não funcionais, e tela /users só para dev. Tudo offline/localhost, sem deploy;`  
+>
+> `• Adicionadas tabs de login Padrão/Dev: a aba 'Dev' bloqueia contas sem role 'dev' e desfaz a sessão se a verificação falhar;`  
+>
+> `• Adicionada coluna avatar_url em users + endpoint PUT /api/auth/me para edição de perfil (nome, e-mail, foto e troca de senha com verificação da senha atual). JWT é reemitido quando nome/e-mail mudam;`  
+>
+> `• Criada página /profile com upload de foto via file input (data URL ≤ 1.5MB salvo direto no SQLite) e troca de senha em formulário separado;`  
+>
+> `• Novo componente Avatar (foto ou iniciais) clicável no header do hub, posicionado entre o toggle de tema e o botão Sair, levando ao perfil;`  
+>
+> `• Permissão da tela /users segue restrita a dev — usuário padrão não vê o link nem consegue acessar a rota.`
 ___
