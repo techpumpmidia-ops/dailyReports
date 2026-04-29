@@ -49,5 +49,9 @@ ___
 >
 > `• Painel de administrador: tela de Usuários reescrita — cada usuário pode ser expandido para ver cargo, status, último acesso, apps que mais usa e preferências configuradas, mantendo as ações de aprovar e alterar permissão. Acesso restrito a contas dev;`  
 >
+> `• Login unificado no HubPumP: removida a separação 'login dev x login padrão' — agora todos entram pela mesma tela. Em vez disso, foi criado o conceito de 'tipo de usuário' (administrador, desenvolvedor, usuário padrão), que vai controlar o que cada pessoa enxerga dentro de cada app — base que sustenta a diferenciação de funcionalidades quando os apps reais entrarem no hub. Administrador continua com acesso a tudo;`  
+>
+> `• README do repositório pumpCore reescrito de ponta a ponta: linguagem acessível para leitores não técnicos (objetivo, funcionalidades, status, segurança em poucas linhas), com explicações breves sempre que aparece um termo técnico (ex.: por que PostgreSQL).`
+>
 > `• Tudo versionado e enviado ao GitHub (repos pumpCore, prototipes e dailyReports).`
 ___
