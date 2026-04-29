@@ -54,4 +54,26 @@ ___
 > `• Novo componente Avatar (foto ou iniciais) clicável no header do hub, posicionado entre o toggle de tema e o botão Sair, levando ao perfil;`  
 >
 > `• Permissão da tela /users segue restrita a dev — usuário padrão não vê o link nem consegue acessar a rota.`
+>
+> `• Adicionada busca de apps por nome na home do hub (com normalização de acento) e estado vazio quando nada bate. Faixa de filtros foi adicionada e depois removida — ficou só a busca, mais limpa;`  
+>
+> `• Sistema de favoritos por usuário: nova tabela user_favorites (PK composta), endpoints GET/PUT/DELETE /api/favorites[/:slug], hook useFavorites com toggle otimista. Botão de estrela no card de cada app e seção 'Favoritos' acima de 'Todos os apps' para acesso rápido (aparece quando não há busca ativa);`  
+>
+> `• Perfil reformulado: cargo, preferências de notificações em 3 toggles auto-save (aprovação / mudança de role / anúncios), upload de foto via data URL (≤ 1.5MB no SQLite), troca de senha exigindo a senha atual e estatísticas próprias (data de cadastro, último acesso, total de apps acessados + breakdown por app);`  
+>
+> `• Zona de perigo no perfil em moldura vermelha — desativar conta exige senha atual + digitar literal 'DESATIVAR'. Login e middleware bloqueiam contas com status 'deactivated'. Tela 'Pending' do App.tsx ganhou variante para conta desativada;`  
+>
+> `• Sistema de notificações no backend: tabela notifications, criação automática quando o admin aprova cadastro ou altera role do usuário, respeitando as preferências do destinatário. Endpoints GET /api/notifications, PUT /:id/read e PUT /read-all. NotificationsProvider no topo do app, sino com badge no header (dropdown clicável) e seção dedicada na página de perfil;`  
+>
+> `• Registro de acessos: tabela app_access_log preenchida em POST /api/apps/:slug/access (chamado pelo AppPlaceholder ao abrir um app). Stats próprias via GET /api/auth/me/stats e stats de qualquer usuário via GET /api/users/:id/details (admin only);`  
+>
+> `• Tela /users (admin) reescrita: cada linha vira um disclosure expansível com cargo, status, último login, último acesso a app, breakdown de apps acessados e estado das preferências de notificação. Mantém ações de aprovar e alterar role na linha;`  
+>
+> `• Colunas adicionais na tabela users: job_title, notification_prefs (JSON), last_login_at, deactivated_at — todas via ALTER TABLE idempotente (protótipo segue sem migration formal);`  
+>
+> `• Endpoints novos no backend: POST /api/auth/me/deactivate (com confirmação literal), GET /api/auth/me/stats, POST /api/apps/:slug/access, /api/notifications [...], /api/favorites [...], /api/users/:id/details. PUT /api/auth/me passou a aceitar jobTitle e notificationPrefs;`  
+>
+> `• Estrutura: criados .claude/settings.local.json em devflow/DevFlow e hubpump/HubPumP (gitignored, sem impacto em build/tsconfig/vite/tailwind);`  
+>
+> `• Tudo subido ao origin/main do repo prototipes em commits separados: feat(hubpump) com favoritos+busca+perfil completo+notificações+stats+zona de perigo, mais o chore do .gitignore.`
 ___
