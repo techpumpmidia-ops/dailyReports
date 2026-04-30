@@ -76,4 +76,12 @@ ___
 > `• Correção: 'npm rebuild better-sqlite3' no backend do HubPumP recompilou o módulo nativo contra o Node 20 atual. Backend voltou a escutar em :4001, login respondendo 200 e o frontend funcionando normalmente;`
 >
 > `• Aprendizado registrado na 'error-memory' (skill de memória persistente de erros): entrada nova em 'dependency/better-sqlite3-segfault-node-mismatch' com sintoma, causa raiz, solução e como diferenciar de causas parecidas — para que esse tempo de diagnóstico não se repita na próxima vez que o erro aparecer.`
+>
+> `• Protótipo ProjPlan (substituto interno do ClickUp): construída a primeira versão offline em localhost (Node/Express/SQLite no backend, Vite/React/TS no frontend), mesmo padrão visual do HubPumP. Inclui sidebar com árvore Workspace → Space → Folder → List, Inbox com 'minhas tasks' / vencendo hoje / atrasadas, detalhe de task em drawer lateral (assignees, prioridade, tags, custom fields, comentários, subtasks), e quatro views da mesma lista: Board (Kanban), List, Calendar e Table. Funcionalidades complexas (Gantt, Automações, Dashboards, Goals, Sprints, Whiteboards, AI, Integrações) aparecem como 'Em breve' — o foco do protótipo é apresentar a visão do produto, não implementá-lo de ponta a ponta;`
+>
+> `• Validação prática do protótipo ProjPlan: subi backend e frontend e bati em todas as rotas da API (workspaces, lists, tasks, inbox, docs, criar comentário, alterar task, marcar subtask). Encontrado e corrigido um bug — a saudação da Inbox aparecia como 'Olá, undefined' porque o endpoint /inbox retornava só o ID do usuário; agora devolve nome, e-mail e avatar igual ao /me. Typecheck e build de produção do frontend passam limpos;`
+>
+> `• Ajuste de UX no ProjPlan: ícone do toggle de tema trocado de raio (Zap) para sol/lua (Sun/Moon), alinhando ao padrão visual já usado no HubPumP — coerência entre os apps internos da PumP;`
+>
+> `• Tudo versionado e enviado ao GitHub (repos prototipes e dailyReports).`
 ___
