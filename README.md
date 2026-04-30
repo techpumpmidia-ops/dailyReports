@@ -69,3 +69,11 @@ ___
 >
 > `• Tudo versionado e enviado ao GitHub (repos pumpCore, prototipes e dailyReports).`
 ___
+> ***30/04/2026***  
+>
+> `• Bug no protótipo HubPumP: frontend (Vite, porta 5174) acusava 'ECONNREFUSED 127.0.0.1:4001' a cada tentativa de login. Causa: o backend Node estava morrendo silenciosamente ao iniciar — sem mensagem de erro, sem porta aberta. Diagnóstico rodando o entrypoint direto mostrou exit code 139 (segfault), indicando módulo nativo incompatível com a versão atual do Node;`
+>
+> `• Correção: 'npm rebuild better-sqlite3' no backend do HubPumP recompilou o módulo nativo contra o Node 20 atual. Backend voltou a escutar em :4001, login respondendo 200 e o frontend funcionando normalmente;`
+>
+> `• Aprendizado registrado na 'error-memory' (skill de memória persistente de erros): entrada nova em 'dependency/better-sqlite3-segfault-node-mismatch' com sintoma, causa raiz, solução e como diferenciar de causas parecidas — para que esse tempo de diagnóstico não se repita na próxima vez que o erro aparecer.`
+___
