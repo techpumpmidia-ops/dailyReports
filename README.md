@@ -53,5 +53,19 @@ ___
 >
 > `• README do repositório pumpCore reescrito de ponta a ponta: linguagem acessível para leitores não técnicos (objetivo, funcionalidades, status, segurança em poucas linhas), com explicações breves sempre que aparece um termo técnico (ex.: por que PostgreSQL).`
 >
+> `• Início da construção do pumpCore (parte da tarde): saímos da fase de protótipos e começamos o projeto real. Estrutura de monorepo montada (um repositório único que comporta todos os apps internos da PumP), com ferramentas de padronização de código e validação automática a cada commit — garante que ninguém suba código fora do padrão;`
+>
+> `• Infraestrutura na nuvem desenhada em código (AWS CDK): três blocos prontos — rede compartilhada (VPC), banco de dados gerenciado (RDS Postgres 16) e cofre de segredos (chaves JWT). Ainda não foi para o ar — está validado offline, aguardando credenciais AWS para subir;`
+>
+> `• Banco de dados local funcionando: Postgres 16 rodando em container (docker-compose) com schema 'core' já migrado. Modelos iniciais criados (usuários, apps, permissões, sessões e auditoria) usando SQLAlchemy + Alembic — base que vai sustentar login, controle de acesso e histórico de uso de todos os apps do hub;`
+>
+> `• Sistema de autenticação reutilizável: pacote 'auth-py' com login por JWT (token assinado com RS256) e senhas protegidas por bcrypt. Pode ser plugado em qualquer app interno da PumP sem reimplementar do zero;`
+>
+> `• Backend do Hub (FastAPI) no ar localmente: endpoints de login, dados do usuário logado e listagem de apps, com 10 testes de integração passando. Frontend do Hub (Vite + React + Tailwind) também no ar localmente, com tela de login validada, dashboard listando os apps e proteção de rotas (quem não está logado é redirecionado);`
+>
+> `• Cliente de autenticação compartilhado ('auth-client'): biblioteca em TypeScript que qualquer app frontend da PumP usa para login, sessão e renovação automática de token — evita que cada app reescreva essa lógica;`
+>
+> `• Pausa estratégica ao final do dia: hub local 100% funcional offline (login → dashboard → listagem de apps contra Postgres real). Próximo passo é deploy em staging na AWS, mas isso depende de credenciais e domínio que ainda preciso receber. Registrado checkpoint detalhado para retomar sem perder contexto;`
+>
 > `• Tudo versionado e enviado ao GitHub (repos pumpCore, prototipes e dailyReports).`
 ___
